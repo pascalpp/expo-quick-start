@@ -1,7 +1,9 @@
 import symbolSetData from "./symbolSetData.json";
 
-export const symbolSet: SymbolSet = symbolSetData as SymbolSet;
-export const symbolNames = Object.keys((symbolSetData as any).symbols);
+export const symbolSet = symbolSetData as SFSymbolSet;
+
+export const symbolNames = Object.keys(symbolSet.symbols);
+
 export const symbolWeights = [
   "black",
   "heavy",
@@ -37,22 +39,10 @@ export type SFSymbolSet = {
   version: string;
   precision: number;
   fontSize: number;
-  symbols: { [key in SFSymbolNames]: SymbolEntry };
   symbols: { [key in SFSymbolName]: SymbolEntry };
 };
 
-export type SFSymbolWeight =
-  | "black"
-  | "heavy"
-  | "bold"
-  | "semibold"
-  | "medium"
-  | "regular"
-  | "light"
-  | "thin"
-  | "ultralight";
-
-export type SFSymbolNames =
+export type SFSymbolName =
   | "square.and.arrow.up"
   | "square.and.arrow.up.fill"
   | "square.and.arrow.up.circle"
