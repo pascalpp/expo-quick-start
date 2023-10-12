@@ -23,17 +23,7 @@ export type CharEntry = {
   geometry: { width: number; height: number };
 };
 
-export type SymbolEntry = {
-  black: CharEntry;
-  bold: CharEntry;
-  heavy: CharEntry;
-  light: CharEntry;
-  medium: CharEntry;
-  regular: CharEntry;
-  semibold: CharEntry;
-  thin: CharEntry;
-  ultralight: CharEntry;
-};
+export type SymbolEntry = { [key in SFSymbolWeight]?: CharEntry };
 
 export type SFSymbolSet = {
   version: string;
