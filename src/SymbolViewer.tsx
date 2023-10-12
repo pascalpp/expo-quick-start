@@ -1,4 +1,4 @@
-import { StyleSheet, Text, ScrollView, View } from "react-native";
+import { StyleSheet, Text, FlatList, View } from "react-native";
 import symbolSet from "./sfsymbols/symbolSet.json";
 import { SFSymbolWeight, Symbol } from "./sfsymbols/Symbol";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -6,6 +6,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 // console.log(symbolSet);
 
 const styles = StyleSheet.create({
+  header: {
+    fontSize: 24,
+    color: "#333",
+    paddingTop: 16,
+  },
   column: {
     flex: 1,
     alignItems: "center",
@@ -20,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     flexDirection: "row",
     gap: 4,
-    width: "100%",
+    width: "98%",
     paddingStart: 8,
     paddingEnd: 8,
   },
@@ -29,28 +34,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     gap: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
   },
-  header: {
-    fontSize: 24,
+  symbolName: {
+    fontSize: 16,
     color: "#333",
-    paddingTop: 16,
+    height: 24,
+    overflow: "hidden",
   },
 });
 
+// @ts-ignore
+const symbolNames = Object.keys(symbolSet.symbols).sort();
+
 export default function SymbolViewer() {
-  // @ts-ignore
-  const symbolNames = Object.keys(symbolSet.symbols);
-  const maxRows = 200; // set to Infinity to show all
   return (
     <SafeAreaView>
-      <ScrollView>
-        <View style={styles.column}>
-          <Text style={styles.header}>SFSymbol Viewer</Text>
-          {symbolNames.slice(0, maxRows).map((name) => (
-            <SymbolRow key={name} name={name} />
-          ))}
-        </View>
-      </ScrollView>
+      <View style={styles.column}>
+        <Text style={styles.header}>SFSymbol Viewer</Text>
+        <FlatList
+          data={symbolNames}
+          renderItem={({ item: name }) => <SymbolRow key={name} name={name} />}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -69,7 +76,7 @@ function SymbolRow({ name }) {
   ];
   return (
     <View style={styles.symbolRow}>
-      <Text>{name}</Text>
+      <Text style={styles.symbolName}>{name}</Text>
       <View style={styles.row}>
         {weights.map((weight) => (
           <Symbol
