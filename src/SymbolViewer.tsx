@@ -1,6 +1,5 @@
 import { StyleSheet, Text, FlatList, View } from "react-native";
-import symbolSet from "./sfsymbols/symbolSet.json";
-import { SFSymbolWeight, Symbol } from "./sfsymbols/Symbol";
+import { SFSymbolWeight, Symbol, symbolSet } from "./sfsymbols";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // console.log(symbolSet);
@@ -36,6 +35,7 @@ const styles = StyleSheet.create({
     gap: 8,
     paddingTop: 8,
     paddingBottom: 8,
+    height: 80,
   },
   symbolName: {
     fontSize: 16,
@@ -45,8 +45,19 @@ const styles = StyleSheet.create({
   },
 });
 
-// @ts-ignore
 const symbolNames = Object.keys(symbolSet.symbols).sort();
+
+const weights: SFSymbolWeight[] = [
+  "black",
+  "heavy",
+  "bold",
+  "semibold",
+  "medium",
+  "regular",
+  "light",
+  "thin",
+  "ultralight",
+];
 
 export default function SymbolViewer() {
   return (
@@ -63,17 +74,6 @@ export default function SymbolViewer() {
 }
 
 function SymbolRow({ name }) {
-  const weights: SFSymbolWeight[] = [
-    "black",
-    "heavy",
-    "bold",
-    "semibold",
-    "medium",
-    "regular",
-    "light",
-    "thin",
-    "ultralight",
-  ];
   return (
     <View style={styles.symbolRow}>
       <Text style={styles.symbolName}>{name}</Text>

@@ -1,4 +1,20 @@
-import symbols from "./symbolSet.json";
-import { SFSymbolNames, CharEntry, SymbolEntry, SymbolSet } from "./types";
+import {
+  symbolSet,
+  SFSymbolNames,
+  SFSymbolWeight,
+  CharEntry,
+  SymbolEntry,
+  SymbolSet,
+} from "./symbolSet";
 
-export { symbols, SFSymbolNames, CharEntry, SymbolEntry, SymbolSet };
+import { Symbol } from "./Symbol";
+
+export {
+  symbolSet,
+  SFSymbolNames,
+  SFSymbolWeight,
+  CharEntry,
+  SymbolEntry,
+  SymbolSet,
+  Symbol,
+};

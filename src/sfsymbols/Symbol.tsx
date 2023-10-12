@@ -1,19 +1,7 @@
 import React from "react";
 
-import symbolSet from "./symbolSet.json";
-import { SFSymbolNames } from "./types";
+import { symbolSet, SFSymbolNames, SFSymbolWeight } from "./symbolSet";
 import Svg, { Path } from "react-native-svg";
-
-export type SFSymbolWeight =
-  | "black"
-  | "heavy"
-  | "bold"
-  | "semibold"
-  | "medium"
-  | "regular"
-  | "light"
-  | "thin"
-  | "ultralight";
 
 export type SymbolProps = {
   name: SFSymbolNames;
@@ -23,7 +11,6 @@ export type SymbolProps = {
 };
 
 export function Symbol({ name, weight, ...props }: SymbolProps) {
-  // @ts-ignore
   const selectedSymbol = symbolSet.symbols[name][weight];
 
   return (
