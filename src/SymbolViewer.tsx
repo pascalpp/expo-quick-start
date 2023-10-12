@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     gap: 8,
   },
+  header: {
+    fontSize: 24,
+    color: "#333",
+    paddingTop: 16,
+  },
 });
 
 export default function SymbolViewer() {
@@ -40,6 +45,7 @@ export default function SymbolViewer() {
     <SafeAreaView>
       <ScrollView>
         <View style={styles.column}>
+          <Text style={styles.header}>SFSymbol Viewer</Text>
           {symbolNames.slice(0, maxRows).map((name) => (
             <SymbolRow key={name} name={name} />
           ))}

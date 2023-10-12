@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import UserIcon from "./user.svg";
-import packageInfo from "./package.json";
+import packageInfo from "../package.json";
 // import symbolSet from "./sfsymbols/symbols.json";
 import { Symbol } from "./sfsymbols/Symbol";
 
