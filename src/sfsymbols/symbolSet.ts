@@ -1,6 +1,20 @@
 import symbolSetData from "./symbolSetData.json";
 
 export const symbolSet: SymbolSet = symbolSetData as SymbolSet;
+export const symbolNames = Object.keys((symbolSetData as any).symbols);
+export const symbolWeights = [
+  "black",
+  "heavy",
+  "bold",
+  "semibold",
+  "medium",
+  "regular",
+  "light",
+  "thin",
+  "ultralight",
+] as const;
+
+export type SFSymbolWeight = (typeof symbolWeights)[number];
 
 export type CharEntry = {
   path: string;
@@ -19,11 +33,12 @@ export type SymbolEntry = {
   ultralight: CharEntry;
 };
 
-export type SymbolSet = {
+export type SFSymbolSet = {
   version: string;
   precision: number;
   fontSize: number;
   symbols: { [key in SFSymbolNames]: SymbolEntry };
+  symbols: { [key in SFSymbolName]: SymbolEntry };
 };
 
 export type SFSymbolWeight =

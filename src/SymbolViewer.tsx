@@ -1,8 +1,6 @@
 import { StyleSheet, Text, FlatList, View } from "react-native";
-import { SFSymbolWeight, Symbol, symbolSet } from "./sfsymbols";
+import { Symbol, symbolNames, symbolWeights } from "./sfsymbols";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-// console.log(symbolSet);
 
 const styles = StyleSheet.create({
   header: {
@@ -45,25 +43,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const symbolNames = Object.keys(symbolSet.symbols).sort();
-
-const weights: SFSymbolWeight[] = [
-  "black",
-  "heavy",
-  "bold",
-  "semibold",
-  "medium",
-  "regular",
-  "light",
-  "thin",
-  "ultralight",
-];
-
 export default function SymbolViewer() {
   return (
     <SafeAreaView>
       <View style={styles.column}>
-        <Text style={styles.header}>SFSymbol Viewer</Text>
+        <Text style={styles.header}>
+          <Symbol name="apple.logo" weight="heavy" /> SFSymbol Viewer
+        </Text>
         <FlatList
           data={symbolNames}
           renderItem={({ item: name }) => <SymbolRow key={name} name={name} />}
@@ -78,7 +64,7 @@ function SymbolRow({ name }) {
     <View style={styles.symbolRow}>
       <Text style={styles.symbolName}>{name}</Text>
       <View style={styles.row}>
-        {weights.map((weight) => (
+        {symbolWeights.map((weight) => (
           <Symbol
             key={weight}
             name={name}

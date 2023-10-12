@@ -1,10 +1,10 @@
 import React from "react";
 
-import { symbolSet, SFSymbolNames, SFSymbolWeight } from "./symbolSet";
+import { symbolSet, SFSymbolName, SFSymbolWeight } from "./symbolSet";
 import Svg, { Path } from "react-native-svg";
 
 export type SymbolProps = {
-  name: SFSymbolNames;
+  name: SFSymbolName;
   weight: SFSymbolWeight;
   width?: number | string;
   height?: number | string;
